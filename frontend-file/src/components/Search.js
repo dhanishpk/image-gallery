@@ -3,7 +3,8 @@ import { Form, Col, Row, Button, Container } from "react-bootstrap";
 const searchBarStyle = {
   backgroundColor: "#cccccc85",
 };
-const Search = () => {
+
+const Search = ({handleSubmit,text,setText}) => {
   return (
     <Container className="mt-4">
       <Row className="justify-content-center">
@@ -11,10 +12,16 @@ const Search = () => {
           <Form>
             <Row>
               <Col xs={10}>
-                <Form.Control placeholder="Search New Images" />
+                <Form.Control placeholder="Search New Images" 
+                value={text}
+                onChange={(e)=>{
+                  setText(e.target.value);
+                }}
+                
+                />
               </Col>
               <Col xs={2}>
-                <Button type="submit" className="primary">
+                <Button type="submit" className="primary" onClick={handleSubmit}> 
                   
                   Search
                 </Button>
