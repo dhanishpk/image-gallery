@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Search from './components/Search';
 import ImageCard from './components/ImageCard';
 import { useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Spinner } from 'react-bootstrap';
 const App = () => {
   // useState is used to initate the state. the the value inside the () is the default value
   // it returna an array of 2 value first one is the current state value
@@ -53,14 +53,21 @@ const App = () => {
       - to hide the value of left part we use !! this operator  will convert the value to the boolean so it wont display at the front 
       */}
       <Container fluid="md" className="mt-4">
-        <Row xs={1} md={3} lg={4}>
-          {!!images.length &&
-            images.map((image, i) => (
-              <Col key={i} className="pb-3">
-                <ImageCard searchdImage={image} handleDelete={onDeleteItem} />
-              </Col>
-            ))}
-        </Row>
+        {images.length > 0 ? (
+          <Row xs={1} md={3} lg={4}>
+            {!!images.length &&
+              images.map((image, i) => (
+                <Col key={i} className="pb-3">
+                  <ImageCard searchdImage={image} handleDelete={onDeleteItem} />
+                </Col>
+              ))}
+          </Row>
+        ) : (
+          <div className="d-flex justify-content-center align-items-center">
+            <Spinner animation="grow" role="status"></Spinner>
+            <div>Search Image..</div>
+          </div>
+        )}
       </Container>
     </div>
   );

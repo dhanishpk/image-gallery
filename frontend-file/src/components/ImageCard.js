@@ -20,7 +20,6 @@ const ImageCard = ({ searchdImage, handleDelete }) => {
           {searchdImage.description || searchdImage.alt_description}
         </Card.Text>
         <Button variant="primary" onClick={() => handleDelete(searchdImage)}>
-          {' '}
           Delete
         </Button>
       </Card.Body>
