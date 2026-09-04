@@ -16,10 +16,16 @@ print(ENVVAR.get("UNSPLASH_API_ACCESSKEY",""))
 
 BASE_URL=ENVVAR.get("BASE_URL","")
 API_KEY=ENVVAR.get("UNSPLASH_API_ACCESSKEY","")
+DEBUG=bool(ENVVAR.get("DEBUGMODE",True))
+
+print(DEBUG)
+
 if not API_KEY:
     raise EnvironmentError("Please create and .env.local file and createn UNSPLASH_API_ACCESSKEY value")
 
 app = Flask(__name__)
+
+app.config['DEBUG']=DEBUG
 
 @app.route("/new_image")
 def new_image():
