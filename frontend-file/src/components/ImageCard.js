@@ -1,12 +1,14 @@
 import { Card, Button } from 'react-bootstrap';
 
 const ImageCard = ({ searchdImage, handleDelete }) => {
+  console.log('image:' + searchdImage.result.urls.small);
+  console.log();
   console.log(searchdImage);
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
         <Card.Img
-          src={searchdImage.urls.small}
+          src={searchdImage.result.urls.small}
           style={{
             height: '300px',
             width: '100%' /* Fills the card width completely */,

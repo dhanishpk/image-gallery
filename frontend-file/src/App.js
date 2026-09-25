@@ -12,23 +12,25 @@ const App = () => {
   const [images, setIsmages] = useState([]);
 
   // this is how the data access from .env file
-  const accessKey = process.env.REACT_APP_UNSPLASH_API_ACCESSKEY;
+  //old way const accessKey = process.env.REACT_APP_UNSPLASH_API_ACCESSKEY;
+  const BASEURL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:5050';
 
   // this is how the event is handling click
   const handleSearchSubmitEvent = (e) => {
     e.preventDefault();
-    fetch(`https://api.unsplash.com/photos/random?query=${searchText}`, {
-      headers: {
-        'User-Agent': 'the-odin-project',
-        Authorization: `Client-ID ${accessKey}`,
-      },
+    fetch(`${BASEURL}/new_image?word=${searchText}`, {
+      headers: {},
     })
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
-        setIsmages([{ ...response, title: searchText }, ...images]);
+        if (response.status === 1) {
+          setIsmages([{ ...response, title: searchText }, ...images]);
 
-        setSearchText('');
+          setSearchText('');
+        } else {
+          alert('No data');
+        }
       })
       .catch((error) => console.error(error));
   };
