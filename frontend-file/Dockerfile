@@ -25,3 +25,7 @@ CMD [ "npm","start" ]
 #docker build . 
 # docker build . -t image-gallery-api this is how name the mage
 #docker run -p 3000:3000 image-frontend  
+#docker build --no-cache . Docker does not use the previous build cache.
+#docker ps to check the runing container
+#docker-compose up -d this work on ackground
+#docker-compose down

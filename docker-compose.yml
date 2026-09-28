@@ -1,0 +1,16 @@
+services:
+  frontend:
+    build: ./frontend-file #file name
+    volumes: 
+        - /app/node_modules # this mention ignore this folder no need to modify
+        - ./frontend-file:/app # this is the file name should update when i do the development same time in container first is the folder name and second is the file name in docker container 
+    ports:
+      - '3000:3000'
+    environment:
+      - CHOKIDAR_USEPOLLING=true #this is used beacuse sometime systemm not reflect the react code properly in container while developement
+  api:
+    build: ./api
+    volumes:         
+        - ./api:/app # this is the file name should update when i do the development same time in container 
+    ports:
+      - '5050:5050'
