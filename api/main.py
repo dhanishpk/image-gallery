@@ -4,9 +4,10 @@ from flask import Flask, request
 import requests  # this is installed by me dhanish using pipenv
 from dotenv import load_dotenv
 from flask_cors import CORS
+from dbconnection import inster_test_db
 
 load_dotenv(dotenv_path="./.env.local")
-
+inster_test_db()
 ## List Env vakue print(os.environ)
 
 ENVVAR = os.environ
