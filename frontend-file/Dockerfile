@@ -29,3 +29,4 @@ CMD [ "npm","start" ]
 #docker ps to check the runing container
 #docker-compose up -d this work on ackground
 #docker-compose down
+#docker-compose build --no-cache  this disable cash layar becoz sometime dependacy might not install when we run build then we can use this 

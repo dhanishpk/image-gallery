@@ -22,3 +22,9 @@ def inster_test_db():
     db = mongo_client.testdbmir
     test_collection = db.test_collection
     res = test_collection.insert_one({"name": "testdata", "age": 20})
+
+
+def create_gallery_db():
+    db = mongo_client.photo_gallery
+    image_collection = db.images
+    return image_collection
